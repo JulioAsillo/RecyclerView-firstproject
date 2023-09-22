@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".ContactActivity">
 
     <com.google.android.material.textfield.TextInputLayout
@@ -18,9 +18,10 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etName_fin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Ingrese nombre" />
+            android:hint="@string/hint_name" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -35,9 +36,10 @@
         app:layout_constraintTop_toBottomOf="@+id/etName">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etTelephoneFin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Ingrese telefono" />
+            android:hint="@string/hint_telefono" />
     </com.google.android.material.textfield.TextInputLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

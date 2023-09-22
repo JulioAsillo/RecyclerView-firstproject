@@ -1,12 +1,18 @@
 package com.example.recyclerview_firstproject
 
+import android.app.Activity
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity() {
+    val REQUEST_CODE = 1
     var contacts = ArrayList<Contact>()
 
     var contactAdapter = ContactAdapter(contacts)
@@ -59,4 +65,35 @@ class MainActivity : AppCompatActivity() {
         contacts.add(Contact("Hirohito", "999999999"))
         contacts.add(Contact("George S. Patton", "121212121"))
     }
+
+    //sobreescribir el método OnCreateOptionMenu, porque ya existe este método
+    //CTRL + O
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater : MenuInflater = menuInflater
+        inflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val intent = Intent(this, ContactActivity::class.java)
+        //startActivity(intent)
+        startActivityForResult(intent, REQUEST_CODE)
+
+        return super.onOptionsItemSelected(item)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == REQUEST_CODE){
+            if(resultCode == Activity.RESULT_OK){
+                val name = data!!.getStringExtra("keyName")
+                val telephone = data!!.getStringExtra("keyTelephone")
+
+                val contact = Contact(name, telephone)
+                contacts.add(contact)
+            }
+        }
+    }
+
 }

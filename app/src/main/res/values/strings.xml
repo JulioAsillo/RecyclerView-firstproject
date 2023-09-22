@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">RecyclerView-firstproject</string>
+    <string name="hint_telefono">Ingrese telefono</string>
+    <string name="hint_name">Ingrese nombre</string>
+    <string name="itemGuardar">Guardar Item</string>
+    <string name="iteamAdd">Añadir</string>
 </resources>
